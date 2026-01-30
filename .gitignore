@@ -1,0 +1,14 @@
+# Databases
+database/*.db
+database/*.sqlite
+database/*.sqlite3
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Excel temp files
+~$*.xlsx
+
+# Power BI temp
+*.pbix.tmp

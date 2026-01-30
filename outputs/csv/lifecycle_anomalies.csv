@@ -1,0 +1,7 @@
+anomaly_type,severity,meter_id,meter_type,region,status,install_date,removal_date,event_id,event_type,event_date,reading_value,new_status,source_table,rule_description
+REMOVED_WITHOUT_DATE,HIGH,MTR006,ELEC,North,REMOVED,2024-06-01,,,,,,,meter_asset,Asset status REMOVED but removal_date is NULL
+REMOVAL_BEFORE_INSTALL,CRITICAL,MTR003,ELEC,London,ACTIVE,2024-03-01,2024-02-15,,,,,,meter_asset,removal_date < install_date
+EVENT_BEFORE_INSTALL,HIGH,MTR001,ELEC,East,ACTIVE,2024-01-10,,2,READING,2023-12-20,130.1,,meter_event,event_date < install_date
+EVENT_AFTER_REMOVAL,CRITICAL,MTR003,ELEC,London,ACTIVE,2024-03-01,2024-02-15,4,STATUS_CHANGE,2024-03-10,,REMOVED,meter_event,event_date > removal_date (asset should be inactive)
+NEGATIVE_READING,HIGH,MTR002,,,,,,3,READING,2024-02-10,-45.7,,meter_event,reading_value < 0 for READING events
+STATUS_MISMATCH,CRITICAL,MTR003,ELEC,London,ACTIVE,2024-03-01,2024-02-15,4,STATUS_CHANGE,2024-03-10,,REMOVED,meter_asset + meter_event,Asset status differs from STATUS_CHANGE event new_status
